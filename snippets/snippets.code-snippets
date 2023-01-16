@@ -1,0 +1,182 @@
+{
+    "Create Express Server":{
+        "prefix":"!express",
+        "body":[
+            "const express = require('express')",
+            "const app = express()",
+            "const port = 3000",
+            "",
+            "app.use(express.json())",
+            "",
+            "app.get('/', (req, res) => res.send('Hello World!'))",
+            "",
+            "app.post('/', (req, res) => {",
+            "    console.log(req.body)",
+            "    res.json({ success: true })",
+            "})",
+            "",
+            "app.listen(port, () => console.log(`Example app listening at http://localhost:3000`))",
+
+        ],
+        "description": "Create Express server."
+        },
+
+    "GET Route Method":{
+        "prefix": "!route.get",
+        "body": [
+            "router.get('/API_URL', async(req, res) => {",
+            "    try {",
+            "       const appss = await Apps.find()",
+            "        res.send(appss)",
+            "    } catch (error) {",
+            "        res.status(500).send(error.message)",
+            "    }",
+            "})"
+        ],
+        "description": "GET route for express js server."
+    },
+    "POST Route Method":{
+        "prefix": "!route.post",
+        "body": [
+            "router.post('/API_URL', async(req, res) => {",
+            "    try {",
+            "        let apps = new Apps({",
+            "            key:value",
+            "        })",
+            "        apps = await apps.save()",
+            "        res.send(apps)",
+            "    } catch (error) {",
+            "        res.status(500).send(error.message)",
+            "    }",
+            "})"
+        ],
+        "description": "POST route for express js server."
+    },
+    "PUT Route Method":{
+        "prefix": "!route.put",
+        "body": [
+            "router.put('/API_URL/:id', async(req, res) => {",
+            "    try {",
+            "        const apps = await Apps.findByIdAndUpdate(req.params.id, {",
+            "            key:value",
+            "        },{new: true})",
+            "        res.send(apps)",
+            "    } catch (error) {",
+            "        res.status(500).send(error.message)",
+            "    }",
+            "})"
+        ],
+        "description": "PUT route for express js server."
+    },
+    "DELETE Route Method":{
+        "prefix": "!route.delete",
+        "body": [
+            "router.delete('/API_URL/:id', async(req, res) => {",
+            "    try {",
+            "        const apps = await Apps.findByIdAndDelete(req.params.id)",
+            "        res.send(apps)",
+            "    } catch (error) {",
+            "        res.status(500).send(error.message)",
+            "    }",
+            "})"
+        ],
+        "description": "DELETE route for express js server."
+    },
+    "ALL Route Method":{
+        "prefix": "!route.all",
+        "body": [
+"const { Router } = require('express');",
+"const router = Router();",
+"const Apps = require('../model/Apps')",
+"",
+"router.get('/', async(req, res) => {",
+"    try {",
+"        const appss = await Apps.find()",
+"        res.send(appss)",
+"    } catch (error) {",
+"        res.status(500).send(error.message)",
+"    }",
+"})",
+"",
+"router.post('/', async(req, res) => {",
+"    try {",
+"        let apps = new Apps({",
+"            key:value",
+"        })",
+"        apps = await apps.save()",
+"        res.send(apps)",
+"    } catch (error) {",
+"        res.status(500).send(error.message)",
+"    }",
+"})",
+"",
+"router.get('/:id', async(req, res) => {",
+"    try {",
+"        const apps = await Apps.findById(req.params.id)",
+"        res.send(apps)",
+"    } catch (error) {",
+"        res.status(500).send(error.message)",
+"    }",
+"})",
+"",
+"router.put('/:id', async(req, res) => {",
+"    try {",
+"        const apps = await Apps.findByIdAndUpdate(req.params.id, {",
+"            key:value",
+"        },{new: true})",
+"        res.send(apps)",
+"    } catch (error) {",
+"        res.status(500).send(error.message)",
+"    }",
+"})",
+"",
+"router.delete('/:id', async(req, res) => {",
+"    try {",
+"        const apps = await Apps.findByIdAndDelete(req.params.id)",
+"        res.send(apps)",
+"    } catch (error) {",
+"        res.status(500).send(error.message)",
+"    }",
+"})",
+"",
+"module.exports = router",
+        ],
+        "description": "Create ALL routes for express js server. "
+    },
+    "Create Local Mongo DB Connect":{
+        "prefix": "!mongo.local",
+        "body": [
+"const mongoose = require('mongoose');",
+"",
+"// Connect MongoDB at default port = 27017",
+"mongoose.connect('mongodb://localhost:27017/DB Name', {",
+    "useNewUrlParser: true,",
+    "useCreateIndex: true,",
+"}, (err) => {",
+"    if (!err) {",
+"        console.log('MongoDB Connection Succeeded.')",
+"    } else {",
+"        console.log('Error in DB connection: ' + err)",
+"    }",
+"});"
+        ],
+        "description": "Connect to Local Mongo DB."
+    },
+    "Create Mongo DB Cloud Connection":{
+        "prefix": "!mongo.cloud",
+        "body": [
+"const mongoose = require('mongoose');",
+"",
+"mongoose.connect(process.env.MONGO_DB_URL, {",
+"    useNewUrlParser: true,",
+"    useUnifiedTopology: true,",
+"}).then(response=>{",
+"    console.log('MongoDB Connection Succeeded.')",
+"}).catch(error=>{",
+"    console.log('Error in DB connection: ' + error)",
+"});"
+        ],
+        "description": "connect to mongo DB cloud storage."
+    }
+
+}    

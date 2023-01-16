@@ -1,0 +1,26 @@
+{
+  "name": "express-snippet",
+  "displayName": "Express snippet",
+  "publisher": "MNick",
+  "repository": {
+    "type": "git",
+    "url":"https://github.com/mnick-yt"
+  },
+  "icon": "icon.png",
+  "description": "This extension will create template code for express server with different route methods.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
